@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="description" content="MalaysiaData Store: หน้าแบบข่าว/ประกาศสไตล์เว็บหน่วยงานการศึกษา จัดหมวดลิงก์ชัดเจน โหลดเร็ว เหมาะกับ GitHub Pages" />
+  <title>MalaysiaData Store | ข่าวสาร & ศูนย์รวมลิงก์ข้อมูล</title>
+
+  <!-- Domain baru -->
+  <link rel="canonical" href="https://malaysiadata.store/" />
+  <meta name="google-site-verification" content="vCKi-MB9iWmbXzsX4G7E-aI-jvOHrdf6uojJT8iLSIs" />
+  <meta name="google-site-verification" content="HBG7SaS-DmFFiYnfI-vT2LOdw3gM2AK3wbmnixc4zR8" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MalaysiaData Store | ข่าวสาร & ศูนย์รวมลิงก์ข้อมูล" />
+  <meta property="og:description" content="หน้าแบบข่าว/ประกาศ สไตล์เว็บหน่วยงานการศึกษา พร้อม Directory ลิงก์ครบถ้วน ไม่ลบไม่เปลี่ยน" />
+  <meta property="og:url" content="https://malaysiadata.store/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="okey.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="okey.png">
+  <link rel="apple-touch-icon" href="okey.png">
+
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Simple schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"MalaysiaData Store",
+    "url":"https://malaysiadata.store/",
+    "inLanguage":"th",
+    "description":"หน้าแบบข่าว/ประกาศสไตล์เว็บหน่วยงานการศึกษา พร้อมศูนย์รวมลิงก์ข้อมูล โหลดเร็ว เหมาะกับ GitHub Pages"
+  }
+  </script>
+
+  <style>
+    :root{
+      /* ธีม “edu gov” แบบคม/เป็นทางการ + โทนเขียว-น้ำเงิน (ต่างจากทุกอันก่อน) */
+      --bg:#f4f7f5;
+      --paper:#ffffff;
+
+      --ink:#0b1f19;
+      --muted:#4c6b60;
+
+      --line:#d7e4de;
+      --line2:#b9cfc6;
+
+      --gov:#0f5132;     /* green gov */
+      --gov2:#0b5ed7;    /* blue accent */
+      --warn:#b54708;    /* amber */
+
+      --radius: 10px;
+      --max: 1180px;
+
+      --shadow: 0 10px 24px rgba(11,31,25,.10);
+      --shadow2: 0 6px 16px rgba(11,31,25,.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Thai", "Helvetica Neue", Arial;
+      color:var(--ink);
+      background:
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, var(--bg) 100%);
+      line-height:1.85;
+    }
+
+    a{color:inherit}
+    a:hover{opacity:.92}
+
+    .wrap{width:min(var(--max), calc(100% - 44px)); margin:0 auto;}
+
+    /* a11y */
+    .skip{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{
+      position:fixed; left:14px; top:14px;
+      width:auto; height:auto;
+      padding:10px 12px;
+      background:#fff;
+      border:1px solid var(--line2);
+      border-radius:10px;
+      box-shadow:var(--shadow);
+      z-index:9999;
+    }
+
+    /* Masthead แบบ edu.gov */
+    .mast{
+      background:
+        linear-gradient(90deg, var(--gov), #083a25);
+      color:#fff;
+      border-bottom: 4px solid rgba(255,255,255,.15);
+    }
+    .mast .wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 0;
+    }
+    .mast small{opacity:.92}
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 260px;
+    }
+    .crest{
+      width:44px;height:44px;
+      display:grid;place-items:center;
+      border-radius: 8px;
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.22);
+      font-weight: 1000;
+      letter-spacing:.6px;
+    }
+    .brand-title{
+      font-weight:1000;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .brand-sub{
+      font-size:13px;
+      opacity:.92;
+      margin-top:2px;
+    }
+
+    /* Utility bar */
+    .util{
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .util .wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 0;
+    }
+    .util .meta{
+      font-size:13px;
+      color: var(--muted);
+    }
+    .util .badges{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .badge{
+      font-size:12px;
+      color: var(--muted);
+      background: #fff;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding:6px 10px;
+      box-shadow: var(--shadow2);
+      white-space:nowrap;
+    }
+    .badge.gov{
+      border-color: rgba(15,81,50,.28);
+      background: linear-gradient(180deg, rgba(15,81,50,.08), #fff);
+      color: var(--ink);
+      font-weight:800;
+    }
+
+    /* Nav horizontal (edu) */
+    .nav{
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+    }
+    .nav .wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 0;
+    }
+    .nav-links{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .nav-links a{
+      text-decoration:none;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius: 8px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .nav-links a.primary{
+      border-color: rgba(11,94,215,.25);
+      background: linear-gradient(180deg, rgba(11,94,215,.08), #fff);
+    }
+
+    /* Layout berita */
+    main{padding: 16px 0 24px;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.55fr .85fr;
+      gap: 14px;
+      align-items:start;
+    }
+
+    .card{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-body{padding: 16px;}
+    .card-head{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,81,50,.06), #fff);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .card-head strong{color: var(--gov)}
+    .stamp{
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding:6px 10px;
+      background:#fff;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height:1.2;
+      letter-spacing:-.3px;
+    }
+    h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing:-.15px;
+    }
+    p{margin: 0 0 10px; color: var(--muted)}
+    .lead{font-size: 16px;}
+
+    .news-meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin: 10px 0 14px;
+    }
+    .pill{
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding:6px 10px;
+      background:#fff;
+    }
+    .pill.hot{
+      border-color: rgba(181,71,8,.28);
+      background: linear-gradient(180deg, rgba(181,71,8,.08), #fff);
+      color: var(--ink);
+      font-weight:800;
+    }
+
+    /* News list */
+    .news-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .news-item{
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius: 10px;
+      background:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .news-item h3{
+      margin:0 0 6px;
+      font-size: 15px;
+      letter-spacing:-.1px;
+      color: var(--ink);
+    }
+    .news-item p{margin:0;color:var(--muted);font-size:14px}
+    .news-item .meta{
+      margin-top:8px;
+      font-size:12px;
+      color: var(--muted);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* Directory compact */
+    .dir{
+      margin-top: 12px;
+      border-top: 1px dashed var(--line2);
+      padding-top: 12px;
+    }
+    .dir-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .dir-grid a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius: 10px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .dir-grid a em{
+      font-style:normal;
+      font-size:12px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    /* CTA */
+    .cta{
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(11,94,215,.22);
+      background:
+        radial-gradient(900px 260px at 10% 0%, rgba(11,94,215,.12), transparent 60%),
+        radial-gradient(900px 260px at 90% 0%, rgba(15,81,50,.10), transparent 60%),
+        #fff;
+      box-shadow: var(--shadow2);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(15,81,50,.28);
+      background: linear-gradient(180deg, rgba(15,81,50,.12), #fff);
+      text-decoration:none;
+      font-weight: 900;
+      white-space:nowrap;
+    }
+    .btn:active{transform: translateY(1px)}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      padding: 18px 0 34px;
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr .6fr;
+      gap: 12px;
+      align-items:start;
+    }
+    .foot .box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow2);
+      padding: 14px;
+    }
+    .foot a{color:inherit; text-decoration:none}
+    .foot a:hover{text-decoration:underline; text-underline-offset: 3px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+      .dir-grid{grid-template-columns: 1fr}
+      .foot{grid-template-columns: 1fr}
+      .nav-links{display:none}
+      .mast .wrap{flex-direction:column; align-items:flex-start}
+      .util .wrap{flex-direction:column; align-items:flex-start}
+      .cta{flex-direction:column; align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">ข้ามไปยังเนื้อหา</a>
+
+  <!-- Masthead -->
+  <div class="mast">
+    <div class="wrap">
+      <div class="brand" aria-label="Site identity">
+        <div class="crest" aria-hidden="true">MY</div>
+        <div>
+          <div class="brand-title">MalaysiaData Store</div>
+          <div class="brand-sub">ข่าวสาร • ประกาศ • ศูนย์รวมลิงก์ข้อมูล (สไตล์ edu/gov)</div>
+        </div>
+      </div>
+      <small>เว็บไซต์ข้อมูลตัวอย่าง • ปี <span id="yTop"></span></small>
+    </div>
+  </div>
+
+  <!-- Utility bar -->
+  <div class="util">
+    <div class="wrap">
+      <div class="meta">
+        หมวดหมู่: ข่าวประกาศ • แหล่งข้อมูลภายนอก • Directory
+      </div>
+      <div class="badges" aria-label="Quick badges">
+        <span class="badge gov">โหลดเร็ว</span>
+        <span class="badge">โครงสร้าง SEO</span>
+        <span class="badge">เหมาะกับ GitHub Pages</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav (ลิงก์หลักด้านบน) -->
+  <div class="nav" role="navigation" aria-label="External links">
+    <div class="wrap">
+      <div class="nav-links">
+        <!-- อย่าลบ/อย่าเปลี่ยนลิงก์ภายนอก -->
+        <a class="primary" href="https://pafiairseruk.org/" target="_blank" rel="noopener noreferrer">Data HK</a>
+        <a class="primary" href="https://pafitanglad.org/" target="_blank" rel="noopener noreferrer">Data SDY</a>
+        <a class="primary" href="https://myfilerecovery.net/" target="_blank" rel="noopener noreferrer">Data SGP</a>
+        <a href="https://datahklotto.us/" target="_blank" rel="noopener noreferrer">Data HK Lotto</a>
+        <a href="https://pafiprayabaratdaya.org/" target="_blank" rel="noopener noreferrer">Data SDY Lotto</a>
+        <a href="https://pafiprayatimur.org/" target="_blank" rel="noopener noreferrer">Data SDY Lotto</a>
+      </div>
+      <a class="btn" href="#directory">เปิด Directory</a>
+    </div>
+  </div>
+
+  <main id="content" class="wrap">
+    <div class="grid">
+      <!-- MAIN NEWS -->
+      <article class="card" aria-label="News article">
+        <div class="card-head">
+          <strong>ข่าวประกาศล่าสุด</strong>
+          <span class="stamp">อัปเดต: <span id="d"></span></span>
+        </div>
+
+        <div class="card-body">
+          <h1>ประกาศการจัดระเบียบศูนย์ข้อมูล: แยกหมวดลิงก์ให้ชัด อ่านง่ายขึ้น</h1>
+
+          <div class="news-meta" aria-label="Meta">
+            <span class="pill hot">ประกาศ</span>
+            <span class="pill">ศูนย์ข้อมูล</span>
+            <span class="pill">แนวทางการใช้งาน</span>
+            <span class="pill">MalaysiaData Store</span>
+          </div>
+
+          <p class="lead">
+            MalaysiaData Store จัดทำรูปแบบหน้า “ข่าว/ประกาศ” เพื่อให้การสื่อสารเป็นทางการและอ่านง่าย
+            เหมาะสำหรับหน้าแรกของเว็บไซต์สไตล์หน่วยงานการศึกษา โดยเน้นการจัดหมวดหมู่ลิงก์และข้อมูลให้เป็นระบบ
+            พร้อมแนวทางการวางลิงก์แบบมีบริบทในบทความ เช่นการอ้างอิง
+            <a href="https://lamarsalaplayadegandia.com/" target="_blank" rel="noopener noreferrer">Data HK</a>
+            ในตำแหน่งที่เกี่ยวข้องจริง
+          </p>
+
+          <p>
+            แนวทางนี้ช่วยลดความรกของหน้า ทำให้ผู้ใช้มองภาพรวมได้ทันทีว่าควรเริ่มจากตรงไหน
+            และสามารถเข้าถึง “ลิงก์สำคัญ” ได้อย่างรวดเร็วผ่านเมนูด้านบน
+            รวมถึงคงรายการลิงก์ทั้งหมดไว้ในส่วน Directory เพื่อความโปร่งใส
+          </p>
+
+          <p>
+            สำหรับผู้ดูแลเว็บไซต์ แนะนำให้ใช้ข้อความสั้น กระชับ และจัดวางองค์ประกอบให้สม่ำเสมอ
+            เพื่อให้หน้าเว็บดูน่าเชื่อถือคล้ายเว็บหน่วยงาน และรองรับการใช้งานบน GitHub Pages ได้โดยตรง
+          </p>
+
+          <div class="cta" aria-label="Primary outbound">
+            <div>
+              <strong style="color:var(--gov)">ทางออกหลัก (CTA)</strong><br>
+              <span style="color:var(--muted);font-size:14px">คลิกเพื่อเข้าหน้าปลายทาง</span>
+            </div>
+            <!-- อย่าลบ/อย่าเปลี่ยนลิงก์ -->
+            <a class="btn" href="http://178.128.215.158/paito-sdy-data-paito-warna-sydney-pools-terbaru/" target="_blank" rel="noopener noreferrer">
+              เปิด Paito SDY
+            </a>
+          </div>
+
+          <!-- Directory inline (ยังคงลิงก์ครบ) -->
+          <section id="directory" class="dir" aria-label="Directory">
+            <h2>Directory: รายการลิงก์ทั้งหมด</h2>
+            <p>
+              รายการด้านล่างคงลิงก์ภายนอกไว้ครบถ้วน (ไม่ลบ/ไม่เปลี่ยน)
+              เพื่อให้ตรวจสอบได้ง่ายและเข้าถึงได้รวดเร็ว
+            </p>
+
+            <div class="dir-grid">
+              <a href="https://airport-parking-quote.co.uk/" target="_blank" rel="noopener">Airport Parking Quote UK <em>external</em></a>
+              <a href="https://beyondtrends.store/" target="_blank" rel="noopener">Beyond Trends <em>external</em></a>
+              <a href="https://cave222.org/" target="_blank" rel="noopener">Cave222 <em>external</em></a>
+              <a href="https://digitalgoodies.store/" target="_blank" rel="noopener">Digital Goodies <em>external</em></a>
+              <a href="https://elvvaws.org/" target="_blank" rel="noopener">ELVVAWS <em>external</em></a>
+              <a href="https://expressthoughts.site/" target="_blank" rel="noopener">Express Thoughts <em>external</em></a>
+              <a href="https://feltribute.xyz/" target="_blank" rel="noopener">Fel Tribute <em>external</em></a>
+              <a href="https://flakey.info/" target="_blank" rel="noopener">Flakey Notes <em>external</em></a>
+              <a href="https://football-livescore.co.uk/" target="_blank" rel="noopener">Football LiveScore UK <em>external</em></a>
+              <a href="https://freeflowingthoughts.site/" target="_blank" rel="noopener">Free Flowing Thoughts <em>external</em></a>
+              <a href="https://genericlevitra-buy.info/" target="_blank" rel="noopener">Generic Levitra Info <em>external</em></a>
+              <a href="https://healthyvoices.org/" target="_blank" rel="noopener">Healthy Voices <em>external</em></a>
+              <a href="https://jobseek.us/" target="_blank" rel="noopener">JobSeek US <em>external</em></a>
+              <a href="https://juicylucyinfo.co.uk/" target="_blank" rel="noopener">Juicy Lucy Info UK <em>external</em></a>
+              <a href="https://katanaownersclub.co.uk/" target="_blank" rel="noopener">Katana Owners Club UK <em>external</em></a>
+              <a href="https://kolkataescortsxx.info/" target="_blank" rel="noopener">Kolkata City Notes <em>external</em></a>
+              <a href="https://laotzu.store/" target="_blank" rel="noopener">Lao Tzu Store <em>external</em></a>
+              <a href="https://lifestylepulse.site/" target="_blank" rel="noopener">Lifestyle Pulse <em>external</em></a>
+              <a href="https://longchampbags.uk/" target="_blank" rel="noopener">Longchamp Bags UK <em>external</em></a>
+              <a href="https://machynllethgolfclub.co.uk/" target="_blank" rel="noopener">Machynlleth Golf Club <em>external</em></a>
+              <a href="https://mailstorm.biz/" target="_blank" rel="noopener">MailStorm <em>external</em></a>
+              <a href="https://masjidmekarindah.id/" target="_blank" rel="noopener">Masjid Mekar Indah <em>external</em></a>
+              <a href="https://michaels-kors.co.uk/" target="_blank" rel="noopener">Michael&#39;s Kors UK <em>external</em></a>
+              <a href="https://middlefieldma.us/" target="_blank" rel="noopener">Middlefield MA <em>external</em></a>
+              <a href="https://musclesteroids.info/" target="_blank" rel="noopener">Muscle Steroids Info <em>external</em></a>
+              <a href="https://mypet24.co.uk/" target="_blank" rel="noopener">MyPet24 UK <em>external</em></a>
+              <a href="https://portpatrick-brewery.co.uk/" target="_blank" rel="noopener">Portpatrick Brewery <em>external</em></a>
+              <a href="https://racingshares.co.uk/" target="_blank" rel="noopener">Racing Shares UK <em>external</em></a>
+              <a href="https://replicamarket.co.uk/" target="_blank" rel="noopener">Replica Market UK <em>external</em></a>
+              <a href="https://scriblerian.net/" target="_blank" rel="noopener">Scriblerian University <em>external</em></a>
+              <a href="https://shanbehzadeh.art/" target="_blank" rel="noopener">Shanbehzadeh Art <em>external</em></a>
+              <a href="https://seafishnottingham.co.uk/" target="_blank" rel="noopener">Sea Fish Nottingham <em>external</em></a>
+              <a href="https://smallde.com/" target="_blank" rel="noopener">SmallDE <em>external</em></a>
+              <a href="https://sobattogel.store/" target="_blank" rel="noopener">Sobat Togel <em>external</em></a>
+              <a href="https://togelonline.space/" target="_blank" rel="noopener">Togel Online <em>external</em></a>
+              <a href="https://ubbgloucestershire.org/" target="_blank" rel="noopener">UBB Gloucestershire <em>external</em></a>
+              <a href="https://unitedforcharitableassistance.org/" target="_blank" rel="noopener">United for Charitable Assistance <em>external</em></a>
+              <a href="https://webmaster-cs.xyz/" target="_blank" rel="noopener">Webmaster CS <em>external</em></a>
+              <a href="https://webprediksibola.id/" target="_blank" rel="noopener">Web Prediksi Bola <em>external</em></a>
+              <a href="https://youth-diplomacy.org/" target="_blank" rel="noopener">Youth Diplomacy <em>external</em></a>
+              <a href="https://jujutsukaisen.io/" target="_blank" rel="noopener">Anoboy <em>external</em></a>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="card" aria-label="Sidebar">
+        <div class="card-head">
+          <strong>ประกาศเพิ่มเติม</strong>
+          <span class="stamp">สรุปแบบสั้น</span>
+        </div>
+        <div class="card-body">
+          <ul class="news-list">
+            <li class="news-item">
+              <h3>แนวทางการวางลิงก์แบบมีบริบท</h3>
+              <p>ให้ใส่ลิงก์เฉพาะจุดที่เกี่ยวข้อง และใช้ส่วน Directory เป็นรายการรวมหลัก</p>
+              <div class="meta"><span>หมวด: คู่มือ</span><span>อ้างอิง: <a href="https://pafiboyolalikota.info/" target="_blank" rel="noopener noreferrer">Angkanet</a></span></div>
+            </li>
+
+            <li class="news-item">
+              <h3>ลิงก์หลักอยู่บนเมนูด้านบน</h3>
+              <p>เข้าถึง Data HK/SDY/SGP ได้ทันที และมีปุ่มเปิด Directory</p>
+              <div class="meta"><span>หมวด: การนำทาง</span><span>ลิงก์: <a href="https://pafiairseruk.org/" target="_blank" rel="noopener">Data HK</a></span></div>
+            </li>
+
+            <li class="news-item">
+              <h3>หน้าเดียวจบสำหรับ GitHub Pages</h3>
+              <p>ไม่มีไลบรารีหนัก รองรับมือถือ และโครงสร้างเหมาะกับ SEO</p>
+              <div class="meta"><span>หมวด: เทคนิค</span><span>สถานะ: พร้อมใช้งาน</span></div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div class="box">
+        <strong style="color:var(--gov)">MalaysiaData Store</strong>
+        <p style="margin:8px 0 0;color:var(--muted)">
+          หน้าแบบข่าว/ประกาศ สไตล์เว็บการศึกษา/หน่วยงาน สำหรับโดเมน <strong>malaysiadata.store</strong>
+          และคงลิงก์อ้างอิงที่คุณกำหนดไว้ เช่น
+          <a href="https://pafisemarapuraklod.org/" target="_blank" rel="noopener noreferrer">Prediksi SDY</a>
+        </p>
+      </div>
+
+      <div class="box" aria-label="Footer external links">
+        <!-- อย่าลบ/อย่าเปลี่ยนลิงก์ -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="https://pafijatimkabmadiun.org/" target="_blank" rel="noopener">Data HK Lotto</a>
+          <a href="https://pafiprayatimur.org/" target="_blank" rel="noopener">Data SDY Lotto</a>
+          <a href="https://pafiairseruk.org/" target="_blank" rel="noopener">Data HK</a>
+          <a href="https://myfilerecovery.net/" target="_blank" rel="noopener">Data SGP</a>
+          <a href="https://pafiprayabarat.org/" target="_blank" rel="noopener">Data SDY</a>
+          <a href="https://lamarsalaplayadegandia.com/" target="_blank" rel="noopener">Data HK</a>
+          <a href="https://pafiprayabaratdaya.org/" target="_blank" rel="noopener">Data SDY Lotto</a>
+          <a href="https://wholesalejerseys4sale.com/" target="_blank" rel="noopener">Prediksi Keluaran</a>
+          <a href="https://pafibenermeriahkabupaten.org/" target="_blank" rel="noopener">Prediksi Jitu</a>
+          <a href="https://pafisemarapuraklod.org/" target="_blank" rel="noopener">Prediksi SDY</a>
+          <a href="https://prediksihkpools.net/" target="_blank" rel="noopener">Prediksi HK</a>
+          <a href="http://178.128.215.158/" target="_blank" rel="noopener">Angkanet</a>
+          <a href="https://pafiboyolalikota.info/" target="_blank" rel="noopener">Angkanet</a>
+          <a href="https://pafiblitarkota.info/" target="_blank" rel="noopener">Data HK 6D</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="legal" style="color:var(--muted)">
+          <div><a href="/privacy.html">Privacy Policy</a> (buat file jika diperlukan)</div>
+          <div style="margin-top:8px">© <span id="y"></span> malaysiadata.store</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const now = new Date();
+    const y = now.getFullYear();
+    document.getElementById('y').textContent = y;
+    document.getElementById('yTop').textContent = y;
+
+    // tanggal tampil ringkas (TH)
+    const d = now.toLocaleDateString('th-TH', { year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('d').textContent = d;
+  </script>
+</body>
+</html>
